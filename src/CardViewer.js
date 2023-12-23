@@ -1,10 +1,16 @@
 import React from 'react';
-import './CardViewer.css'
+import './CardViewer.css';
+
+import { Link, withRouter } from 'react-router-dom';
+import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 class CardViewer extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
+            card: props.cards,
             currentIndex: 0,
             displayFront: true,
         };
@@ -33,15 +39,23 @@ class CardViewer extends React.Component {
     );
 
     render(){
+        if(!isLoaded(this.props.cards)) {
+            return <div>Loading...</div>
+        }
+
+        if(isEmpty(this.props.cards)){
+            return <div>Page not found!</div>
+        }
+
         const card = this.props.cards[this.state.currentIndex][
             this.state.displayFront ? 'front' : 'back'
         ];
 
         return (
             <div>
-                <h2>Card Viewer</h2>
+                <h2>{this.props.name}</h2>
                 Card {this.state.currentIndex+1} out of {this.props.cards.length}.
-                <div className='card' onClick={this.flipCard}>
+                <div className="card" onClick={this.flipCard}>
                     {card}
                 </div>
                 <br />
@@ -52,10 +66,25 @@ class CardViewer extends React.Component {
                     Next card
                 </button>
                 <hr />
-                <button onClick={this.props.switchMode}>Go to card editor</button>
+                <Link to="/">To Home</Link>
             </div>
         );
     }
 }
 
-export default CardViewer;
+const mapStateToProps = (state, props) => {
+    const deck = state.firebase.data[props.match.params.deckId];
+    const name = deck && deck.name;
+    const cards = deck && deck.cards;
+
+    return { cards: cards, name: name};
+}
+
+export default compose(
+    withRouter,
+    firebaseConnect(props => {
+        const deckId = props.match.params.deckId;
+        return [{ path: `/Flashcard/${deckId}`, storeAs: deckId}];
+    }),
+    connect(mapStateToProps),
+)(CardViewer);
