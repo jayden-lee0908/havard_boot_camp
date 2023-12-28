@@ -1,14 +1,91 @@
-table,
-td,
-th {
-    border: 1px solid black;
+/* CardEditor.css */
+
+/* Styling for the overall container of the card editor */
+.card-editor-container {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-table {
-    border-collapse: collapse;
+/* Styling for the header of the card editor */
+.card-editor-header {
+    font-size: 24px;
+    color: #444;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-td,
-th {
+/* Styling for the deck name input */
+.deck-name-input {
+    width: 100%;
     padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Styling for the card table */
+.card-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.card-table thead {
+    background-color: #e9ecef;
+}
+
+.card-table th,
+.card-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Styling for card input fields */
+.card-input {
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Styling for buttons */
+.card-editor-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.card-editor-button:hover {
+    background-color: #0056b3;
+}
+
+.card-editor-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Styling for the link back to home */
+.home-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.home-link:hover {
+    background-color: #218838;
 }

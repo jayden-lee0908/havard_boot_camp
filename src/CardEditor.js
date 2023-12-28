@@ -51,31 +51,32 @@ class CardEditor extends React.Component {
         this.props.firebase.update(`/`, updates, onComplete); // Update and callback
     };
 
-    render(){
-        const cards = this.state.cards.map((card, index) =>{
+    render() {
+        const cards = this.state.cards.map((card, index) => {
             return (
                 <tr key={index}>
                     <td>{card.front}</td>
                     <td>{card.back}</td>
                     <td>
-                        <button onClick={() => this.deleteCard(index)}>Delete card</button>
+                        <button className="card-editor-button" onClick={() => this.deleteCard(index)}>Delete card</button>
                     </td>
                 </tr>
             );
         });
 
-        return(
-            <div>
-                <h2>Card Editor</h2>
+        return (
+            <div className="card-editor-container">
+                <h2 className="card-editor-header">Card Editor</h2>
                 <div>
-                    Deck Name: <input 
-                    name = 'name'
-                    onChange={this.handleChange} 
-                    placeholder='Name of deck' 
-                    value = {this.state.name}/>
+                    Deck Name: <input
+                        className="deck-name-input"
+                        name='name'
+                        onChange={this.handleChange}
+                        placeholder='Name of deck'
+                        value={this.state.name} />
                 </div>
                 <br />
-                <table>
+                <table className="card-table">
                     <thead>
                         <tr>
                             <th>Front</th>
@@ -85,32 +86,35 @@ class CardEditor extends React.Component {
                     </thead>
                     <tbody>{cards}</tbody>
                 </table>
-                <br/>
-                <input 
-                name='front'
-                onChange={this.handleChange}
-                placeholder='Front of card' 
-                value={this.state.front}
+                <br />
+                <input
+                    className="card-input"
+                    name='front'
+                    onChange={this.handleChange}
+                    placeholder='Front of card'
+                    value={this.state.front}
                 />
 
-                <input 
-                name='back'
-                onChange={this.handleChange}
-                placeholder='Back of card'
-                value={this.state.back}
+                <input
+                    className="card-input"
+                    name='back'
+                    onChange={this.handleChange}
+                    placeholder='Back of card'
+                    value={this.state.back}
                 />
-                <button onClick={this.addCard}>Add card</button>
+                <button className="card-editor-button" onClick={this.addCard}>Add card</button>
                 <hr />
                 <div>
-                    <button 
-                    disabled={!this.state.name.trim() || this.state.cards.length ===0}
-                    onClick={this.createDeck}
+                    <button
+                        className="card-editor-button"
+                        disabled={!this.state.name.trim() || this.state.cards.length === 0}
+                        onClick={this.createDeck}
                     >
                         Create deck
                     </button>
                 </div>
                 <br />
-                <Link to="/">To Home</Link>
+                <Link className="home-link" to="/">To Home</Link>
             </div>
         );
     }

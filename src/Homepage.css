@@ -1,0 +1,90 @@
+/* General styling for the homepage with a technological arts style */
+.homepage-container {
+    font-family: 'Roboto', Arial, sans-serif;
+    /* Modern font */
+    color: #002143;
+    /* White text for contrast */
+    background-color: #eaebe6;
+    /* Dark background for a sleek look */
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Styling for the loading div */
+.loading {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Styling for the header */
+.header {
+    font-size: 28px;
+    color: #343950;
+    /* Vibrant, technological color */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styling for sub-header */
+.sub-header {
+    background-color: #9fe4c2;
+    font-size: 22px;
+    color: #002143;
+    /* Energetic, contrasting color */
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 15px 15px;
+    text-align: center;
+}
+
+/* Styling for links */
+.link {
+    color: #002143;
+    /* Bright link color */
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+    /* Smooth color transition on hover */
+}
+
+.link:hover {
+    color: #0d47a1;
+    /* Darker shade on hover */
+    text-decoration: underline;
+}
+
+/* Styling for the deck link wrapping the item */
+.deck-link {
+    text-decoration: none;
+    /* Removes underline from all links */
+    color: inherit;
+    /* Inherits color from parent for consistency */
+    display: block;
+    /* Makes the link block-level, so it fills the div */
+    margin-bottom: 15px;
+}
+
+/* Styling for individual deck items */
+.deck-item {
+    margin-bottom: 15px;
+    color: #002143;
+    background-color: #adb0ab;
+    /* Darker shade for items */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    text-align: center;
+    transition: background-color 0.3s, box-shadow 0.2s, transform 0.2s;
+    /* Smooth transitions for hover effects */
+}
+
+.deck-link:hover .deck-item {
+    background-color: #616161;
+    /* Lighter background on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Larger shadow for lift effect */
+    transform: translateY(-3px);
+}

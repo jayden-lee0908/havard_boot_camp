@@ -38,13 +38,13 @@ class CardViewer extends React.Component {
         { displayFront: !this.state.displayFront }
     );
 
-    render(){
-        if(!isLoaded(this.props.cards)) {
-            return <div>Loading...</div>
+    render() {
+        if (!isLoaded(this.props.cards)) {
+            return <div className="loading-message">Loading...</div>
         }
 
-        if(isEmpty(this.props.cards)){
-            return <div>Page not found!</div>
+        if (isEmpty(this.props.cards)) {
+            return <div className="not-found-message">Page not found!</div>
         }
 
         const card = this.props.cards[this.state.currentIndex][
@@ -52,21 +52,25 @@ class CardViewer extends React.Component {
         ];
 
         return (
-            <div>
-                <h2>{this.props.name}</h2>
-                Card {this.state.currentIndex+1} out of {this.props.cards.length}.
+            <div className="card-viewer-container">
+                <h2 className="card-viewer-header">{this.props.name}</h2>
+                Card {this.state.currentIndex + 1} out of {this.props.cards.length}.
                 <div className="card" onClick={this.flipCard}>
                     {card}
                 </div>
                 <br />
-                <button disabled={this.state.currentIndex===0} onClick={this.prevCard}>
+                <button
+                    disabled={this.state.currentIndex === 0}
+                    onClick={this.prevCard}>
                     Prev card
                 </button>
-                <button disabled={this.state.currentIndex === this.props.cards.length-1} onClick={this.nextCard}>
+                <button
+                    disabled={this.state.currentIndex === this.props.cards.length - 1}
+                    onClick={this.nextCard}>
                     Next card
                 </button>
                 <hr />
-                <Link to="/">To Home</Link>
+                <Link className="home-link" to="/">To Home</Link>
             </div>
         );
     }
