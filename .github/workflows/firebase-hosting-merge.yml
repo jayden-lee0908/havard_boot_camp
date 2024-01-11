@@ -15,10 +15,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16' # specify the Node.js version you want to use
-      - name: Install Dependencies
-        run: npm install # install dependencies
       - name: Install firebase
         run: npm install --legacy-peer-deps react-redux-firebase redux-firestore # install dependencies
+  
+      - name: Install Dependencies
+        run: npm install # install dependencies
       - name: Build
         run: npm run build # build the project
       - uses: FirebaseExtended/action-hosting-deploy@v0
